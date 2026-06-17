@@ -36,7 +36,6 @@ body{
   min-height:100vh;
   overflow-x:hidden;
 }
-/* Scanline texture */
 body::after{
   content:'';
   position:fixed;inset:0;
@@ -140,7 +139,6 @@ a{color:inherit;text-decoration:none;}
   position:relative;
   overflow:hidden;
 }
-/* ambient grid */
 .hero::before{
   content:'';position:absolute;inset:0;
   background-image:
@@ -226,7 +224,6 @@ a{color:inherit;text-decoration:none;}
   aspect-ratio:16/9;max-height:580px;
 }
 .map-svg{width:100%;height:100%;display:block;}
-/* region hover */
 .region{
   transition:opacity .2s,filter .2s;
   cursor:pointer;
@@ -300,7 +297,6 @@ a{color:inherit;text-decoration:none;}
 }
 @keyframes pulse{50%{box-shadow:0 0 2px var(--neon);}}
 
-/* ====== CONNECTED SERVICE (logged in) ====== */
 .connected-badge{
   display:inline-flex;align-items:center;gap:6px;
   font-family:'JetBrains Mono',monospace;font-size:0.72rem;
@@ -319,7 +315,6 @@ a{color:inherit;text-decoration:none;}
 .dash-card .value{font-size:1.7rem;font-weight:700;font-family:'Chakra Petch',sans-serif;color:var(--neon);}
 .dash-card .sub{font-size:0.8rem;color:var(--muted);margin-top:2px;}
 
-/* stock mini chart */
 .mini-chart{height:60px;display:flex;align-items:flex-end;gap:3px;margin-top:12px;}
 .bar{
   flex:1;border-radius:2px 2px 0 0;
@@ -436,7 +431,7 @@ a{color:inherit;text-decoration:none;}
 .link{color:var(--neon);cursor:pointer;}
 .link:hover{text-decoration:underline;}
 
-/* ====== PROFILE (logged in) ====== */
+/* ====== PROFILE ====== */
 .profile-bar{
   background:var(--bg2);border-bottom:1px solid var(--border);
   padding:20px 24px;
@@ -514,7 +509,6 @@ footer span{color:var(--neon);}
 
 <div class="app">
 
-<!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
     <div class="nav-logo" onclick="goto('home')">
@@ -528,6 +522,7 @@ footer span{color:var(--neon);}
       <div class="nav-link" onclick="goto('activities')" data-page="activities">กิจกรรม</div>
       <div class="nav-link" onclick="goto('services')" data-page="services">บริการ</div>
     </div>
+ 
     <div class="nav-right" id="navRight">
       <button class="btn btn-ghost btn-sm" onclick="goto('login')">เข้าสู่ระบบ</button>
       <button class="btn btn-neon btn-sm" onclick="goto('login')">สมัครสมาชิก</button>
@@ -535,7 +530,6 @@ footer span{color:var(--neon);}
   </div>
 </nav>
 
-<!-- ====== HOME PAGE ====== -->
 <div id="page-home" class="page active">
   <div class="hero">
     <div class="hero-flag">🏴 BOXXLAND · FOUNDED 2024 · DIGITAL NATION</div>
@@ -568,7 +562,6 @@ footer span{color:var(--neon);}
     </div>
   </div>
 
-  <!-- quick links section -->
   <div class="section">
     <div class="section-header">
       <div class="eyebrow">explore</div>
@@ -600,7 +593,6 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- ====== MAP PAGE ====== -->
 <div id="page-map" class="page">
   <div class="map-wrap">
     <div class="section-header" style="padding:40px 0 24px;">
@@ -619,11 +611,9 @@ footer span{color:var(--neon);}
             <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(184,255,87,0.06)" stroke-width="0.5"/>
           </pattern>
         </defs>
-        <!-- ocean background -->
         <rect width="900" height="500" fill="#0d1117"/>
         <rect width="900" height="500" fill="url(#grid)"/>
 
-        <!-- Region: NOVA CORE (capital) -->
         <polygon class="region" data-region="nova" points="380,120 500,100 560,200 520,300 400,320 320,240 340,160"
           fill="rgba(184,255,87,0.15)" stroke="#b8ff57" stroke-width="1.5" filter="url(#glow)"
           onclick="showRegion('nova')"/>
@@ -634,36 +624,30 @@ footer span{color:var(--neon);}
           <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
         </circle>
 
-        <!-- Region: HEXPORT (trade) -->
         <polygon class="region" data-region="hexport" points="560,200 650,160 720,230 700,330 580,350 520,300"
           fill="rgba(138,255,203,0.1)" stroke="#8affcb" stroke-width="1" onclick="showRegion('hexport')"/>
         <text x="630" y="265" text-anchor="middle" fill="#8affcb" font-size="12" font-family="Chakra Petch">HEXPORT</text>
         <text x="630" y="280" text-anchor="middle" fill="rgba(138,255,203,0.6)" font-size="9" font-family="JetBrains Mono">เขตค้าขาย</text>
 
-        <!-- Region: GLITCH DISTRICT -->
         <polygon class="region" data-region="glitch" points="320,240 400,320 370,420 240,440 200,350 260,270"
           fill="rgba(177,75,255,0.1)" stroke="#b14bff" stroke-width="1" onclick="showRegion('glitch')"/>
         <text x="290" y="355" text-anchor="middle" fill="#b14bff" font-size="12" font-family="Chakra Petch">GLITCH</text>
         <text x="290" y="370" text-anchor="middle" fill="rgba(177,75,255,0.6)" font-size="9" font-family="JetBrains Mono">เขตสร้างสรรค์</text>
 
-        <!-- Region: DATAFORGE (bots) -->
         <polygon class="region" data-region="dataforge" points="200,160 320,140 340,160 320,240 260,270 180,240 160,180"
           fill="rgba(255,204,68,0.1)" stroke="#ffcc44" stroke-width="1" onclick="showRegion('dataforge')"/>
         <text x="250" y="202" text-anchor="middle" fill="#ffcc44" font-size="12" font-family="Chakra Petch">DATAFORGE</text>
         <text x="250" y="217" text-anchor="middle" fill="rgba(255,204,68,0.6)" font-size="9" font-family="JetBrains Mono">เขตบอท</text>
 
-        <!-- Region: OUTLANDS -->
         <polygon class="region" data-region="outlands" points="580,350 700,330 750,430 650,480 480,470 370,420 400,320 520,300"
           fill="rgba(122,130,146,0.08)" stroke="#4a5060" stroke-width="1" onclick="showRegion('outlands')"/>
         <text x="565" y="415" text-anchor="middle" fill="#7a8292" font-size="12" font-family="Chakra Petch">OUTLANDS</text>
         <text x="565" y="430" text-anchor="middle" fill="rgba(122,130,146,0.6)" font-size="9" font-family="JetBrains Mono">ดินแดนรกร้าง</text>
 
-        <!-- Connecting lines (roads) -->
         <line x1="430" y1="190" x2="630" y2="255" stroke="rgba(184,255,87,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
         <line x1="430" y1="190" x2="250" y2="202" stroke="rgba(184,255,87,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
         <line x1="430" y1="190" x2="290" y2="355" stroke="rgba(184,255,87,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
 
-        <!-- compass -->
         <text x="810" y="60" fill="rgba(184,255,87,0.5)" font-size="10" font-family="JetBrains Mono" text-anchor="middle">N</text>
         <line x1="810" y1="65" x2="810" y2="90" stroke="rgba(184,255,87,0.3)" stroke-width="1"/>
         <line x1="798" y1="77" x2="822" y2="77" stroke="rgba(184,255,87,0.3)" stroke-width="1"/>
@@ -689,7 +673,6 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- ====== WORKS PAGE ====== -->
 <div id="page-works" class="page">
   <div class="section">
     <div class="section-header">
@@ -773,7 +756,6 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- ====== ACTIVITIES PAGE ====== -->
 <div id="page-activities" class="page">
   <div class="section">
     <div class="section-header">
@@ -822,7 +804,6 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- ====== SERVICES PAGE ====== -->
 <div id="page-services" class="page">
   <div id="servicesGuest">
     <div class="section">
@@ -880,7 +861,6 @@ footer span{color:var(--neon);}
     </div>
   </div>
 
-  <!-- LOGGED IN SERVICES VIEW -->
   <div id="servicesLoggedIn" style="display:none;">
     <div id="profileBar" class="profile-bar">
       <div class="profile-bar-inner">
@@ -902,7 +882,6 @@ footer span{color:var(--neon);}
         <h2>บริการที่เชื่อมต่อ</h2>
       </div>
       <div class="services-grid">
-        <!-- Economy connected -->
         <div class="service-card" onclick="showEconomy()" style="cursor:pointer;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
             <div class="service-icon">💹</div>
@@ -915,7 +894,6 @@ footer span{color:var(--neon);}
             <button class="btn btn-outline btn-sm">เปิด Dashboard</button>
           </div>
         </div>
-        <!-- Skibidri connected -->
         <div class="service-card" onclick="showAI()" style="cursor:pointer;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
             <div class="service-icon">🤖</div>
@@ -937,7 +915,7 @@ footer span{color:var(--neon);}
           <p>เปิดตั๋ว, ติดตามสถานะ</p>
           <div class="service-meta" style="margin-top:16px;">
             <div class="service-status"><span class="status-dot"></span>ONLINE</div>
-            <button class="btn btn-neon btn-sm" onclick="showToast('เชื่อมต่อ Support Portal แล้ว! ✓')">เชื่อมต่อ</button>
+            <button class="btn btn-neon btn-sm" onclick="showToast('เชื่อมต่อ Support Portal แล้ว! ✓'); event.stopPropagation();">เชื่อมต่อ</button>
           </div>
         </div>
         <div class="service-card">
@@ -949,7 +927,7 @@ footer span{color:var(--neon);}
           <p>สถานะ antispam/antiraid</p>
           <div class="service-meta" style="margin-top:16px;">
             <div class="service-status"><span class="status-dot"></span>ONLINE</div>
-            <button class="btn btn-neon btn-sm" onclick="showToast('เชื่อมต่อ Guardian แล้ว! ✓')">เชื่อมต่อ</button>
+            <button class="btn btn-neon btn-sm" onclick="showToast('เชื่อมต่อ Guardian แล้ว! ✓'); event.stopPropagation();">เชื่อมต่อ</button>
           </div>
         </div>
       </div>
@@ -957,7 +935,6 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- ====== LOGIN PAGE ====== -->
 <div id="page-login" class="page">
   <div class="login-wrap">
     <div class="login-box">
@@ -988,7 +965,6 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- ECONOMY MODAL -->
 <div class="modal-overlay" id="econModal">
   <div class="modal" style="max-width:700px;width:100%;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
@@ -1028,7 +1004,6 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- AI MODAL -->
 <div class="modal-overlay" id="aiModal">
   <div class="modal" style="max-width:500px;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
@@ -1048,10 +1023,8 @@ footer span{color:var(--neon);}
   </div>
 </div>
 
-<!-- TOAST -->
 <div id="toast"></div>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <span>BOXXLAND</span> · ราชอาณาจักรดิจิทัล · <span>BXL-2024</span><br>
@@ -1059,7 +1032,7 @@ footer span{color:var(--neon);}
   </div>
 </footer>
 
-</div><!-- .app -->
+</div>
 
 <script>
 // ====== STATE ======
@@ -1070,8 +1043,14 @@ let currentPage = 'home';
 function goto(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  
   const el = document.getElementById('page-' + page);
-  if (el) el.classList.add('active');
+  if (el) {
+    el.classList.add('active');
+  } else {
+    console.error('ไม่พบหน้าเพจไอดี: page-' + page);
+  }
+  
   const link = document.querySelector(`.nav-link[data-page="${page}"]`);
   if (link) link.classList.add('active');
   currentPage = page;
@@ -1081,22 +1060,32 @@ function goto(page) {
 // ====== AUTH ======
 function doLogin(method) {
   const user = method === 'discord' ? 'Moodeng#1234' : (document.getElementById('loginUser')?.value || 'Moodeng');
-  if (!user.trim() && method !== 'discord') { showToast('⚠️ กรุณากรอก username'); return; }
+  if (!user.trim() && method !== 'discord') { 
+    showToast('⚠️ กรุณากรอก username'); 
+    return;
+  }
   currentUser = { name: user.split('#')[0] || 'Moodeng', id: 'BXL#0001' };
-  // update nav
+  
   const nr = document.getElementById('navRight');
-  nr.innerHTML = `
-    <div class="nav-user">
-      <div class="nav-avatar">${currentUser.name[0].toUpperCase()}</div>
-      <span class="nav-username">${currentUser.name}</span>
-      <button class="btn btn-ghost btn-sm" onclick="logout()">ออก</button>
-    </div>`;
-  // update profile bar
-  document.getElementById('profileAvatarLg').textContent = currentUser.name[0].toUpperCase();
-  document.getElementById('profileName').textContent = currentUser.name;
-  // show services
-  document.getElementById('servicesGuest').style.display = 'none';
-  document.getElementById('servicesLoggedIn').style.display = 'block';
+  if (nr) {
+    nr.innerHTML = `
+      <div class="nav-user">
+        <div class="nav-avatar">${currentUser.name[0].toUpperCase()}</div>
+        <span class="nav-username">${currentUser.name}</span>
+        <button class="btn btn-ghost btn-sm" onclick="logout()">ออก</button>
+      </div>`;
+  }
+  
+  const profileAvatar = document.getElementById('profileAvatarLg');
+  const profileName = document.getElementById('profileName');
+  if (profileAvatar) profileAvatar.textContent = currentUser.name[0].toUpperCase();
+  if (profileName) profileName.textContent = currentUser.name;
+  
+  const guestView = document.getElementById('servicesGuest');
+  const loggedInView = document.getElementById('servicesLoggedIn');
+  if (guestView) guestView.style.display = 'none';
+  if (loggedInView) loggedInView.style.display = 'block';
+  
   showToast(`ยินดีต้อนรับ, ${currentUser.name}! 🎉`);
   goto('services');
 }
@@ -1104,11 +1093,17 @@ function doLogin(method) {
 function logout() {
   currentUser = null;
   const nr = document.getElementById('navRight');
-  nr.innerHTML = `
-    <button class="btn btn-ghost btn-sm" onclick="goto('login')">เข้าสู่ระบบ</button>
-    <button class="btn btn-neon btn-sm" onclick="goto('login')">สมัครสมาชิก</button>`;
-  document.getElementById('servicesGuest').style.display = 'block';
-  document.getElementById('servicesLoggedIn').style.display = 'none';
+  if (nr) {
+    nr.innerHTML = `
+      <button class="btn btn-ghost btn-sm" onclick="goto('login')">เข้าสู่ระบบ</button>
+      <button class="btn btn-neon btn-sm" onclick="goto('login')">สมัครสมาชิก</button>`;
+  }
+  
+  const guestView = document.getElementById('servicesGuest');
+  const loggedInView = document.getElementById('servicesLoggedIn');
+  if (guestView) guestView.style.display = 'block';
+  if (loggedInView) loggedInView.style.display = 'none';
+  
   showToast('ออกจากระบบแล้ว');
   goto('home');
 }
@@ -1146,69 +1141,97 @@ function showRegion(id) {
   const data = regionData[id];
   if (!data) return;
   const panel = document.getElementById('mapPanel');
-  document.getElementById('regionTitle').textContent = data.title;
-  document.getElementById('regionDesc').textContent = data.desc;
+  const rTitle = document.getElementById('regionTitle');
+  const rDesc = document.getElementById('regionDesc');
   const tagsEl = document.getElementById('regionTags');
-  tagsEl.innerHTML = data.tags.map(t => `<span class="tag gray">${t}</span>`).join('');
-  panel.classList.add('show');
+  
+  if (rTitle) rTitle.textContent = data.title;
+  if (rDesc) rDesc.textContent = data.desc;
+  if (tagsEl) tagsEl.innerHTML = data.tags.map(t => `<span class="tag gray">${t}</span>`).join('');
+  if (panel) panel.classList.add('show');
 }
 
 // ====== ECONOMY DASHBOARD ======
 function showEconomy() {
-  document.getElementById('econModal').classList.add('show');
+  const modal = document.getElementById('econModal');
+  if (modal) modal.classList.add('show');
 }
 
 // ====== AI CHAT ======
 function showAI() {
-  document.getElementById('aiModal').classList.add('show');
+  const modal = document.getElementById('aiModal');
+  if (modal) modal.classList.add('show');
 }
 
 const aiReplies = [
   'สวัสดีครับ! ผม Skibidri AI ช่วยอะไรได้บ้างครับ 🤖',
   'คำถามน่าสนใจมากครับ! ใน Boxxland เรามีบอทหลายตัวทำงานอยู่ตลอด 24/7',
   'ถ้าอยากให้ gen ภาพ ลองสั่งผ่าน Discord ของเซิร์ฟนะครับ 🎨',
-  'NOVA CORE คือเมืองหลวงของ Boxxland ครับ รวมระบบทุกอย่างไว้ที่นั่น',
+  'NOVA CORE คือเมืองหลวง of Boxxland ครับ รวมระบบทุกอย่างไว้ที่นั่น',
   'ผมขับเคลื่อนด้วย Google Gemini ครับ — มีทั้ง text, voice และ image gen!',
 ];
 let aiIdx = 0;
 
 function sendAI() {
   const input = document.getElementById('aiInput');
+  if (!input) return;
   const msg = input.value.trim();
   if (!msg) return;
+  
   const chat = document.getElementById('aiChat');
+  if (!chat) return;
+  
   chat.innerHTML += `<div style="text-align:right;margin-bottom:10px;"><span style="background:var(--neon-dim);border-radius:8px;padding:4px 10px;color:var(--neon);font-size:0.88rem;">${msg}</span></div>`;
   input.value = '';
+  chat.scrollTop = chat.scrollHeight;
+  
   setTimeout(() => {
     const reply = aiReplies[aiIdx % aiReplies.length];
     aiIdx++;
     chat.innerHTML += `<div style="color:var(--neon);margin-bottom:10px;font-size:0.88rem;"><b>Skibidri:</b> ${reply}</div>`;
     chat.scrollTop = chat.scrollHeight;
   }, 600);
-  chat.scrollTop = chat.scrollHeight;
 }
 
 // ====== MODALS ======
 function closeModal(id) {
-  document.getElementById(id).classList.remove('show');
+  const modal = document.getElementById(id);
+  if (modal) modal.classList.remove('show');
 }
+
 document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('show'); });
+  m.addEventListener('click', e => { 
+    if (e.target === m) m.classList.remove('show'); 
+  });
 });
 
 // ====== TOAST ======
 let toastTimer;
 function showToast(msg) {
   const t = document.getElementById('toast');
+  if (!t) return;
+  
+  t.classList.remove('show');
+  void t.offsetWidth; // Force reflow
+  
   t.textContent = msg;
   t.classList.add('show');
+  
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+  toastTimer = setTimeout(() => {
+    t.classList.remove('show');
+  }, 2800);
 }
 
-// ====== ENTER key on login ======
+// ====== GLOBAL KEYDOWN LISTENER ======
 document.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && currentPage === 'login') doLogin();
+  if (e.key === 'Enter' && currentPage === 'login') {
+    doLogin();
+  }
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show'));
   }
+});
+</script>
+</body>
+</html>
