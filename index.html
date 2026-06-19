@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boxxland — ประเทศจินตนาการ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f8fa;
+  --white:#ffffff;
+  --border:#e4e7ed;
+  --border2:#d0d5de;
+  --text:#1a1d24;
+  --muted:#6b7280;
+  --muted2:#9ca3af;
+  --orange:#f97316;
+  --orange-light:#fff4ed;
+  --orange-hover:#ea6c0a;
+  --blue:#3b82f6;
+  --blue-light:#eff6ff;
+  --green:#22c55e;
+  --green-light:#f0fdf4;
+  --purple:#8b5cf6;
+  --purple-light:#f5f3ff;
+  --red:#ef4444;
+  --yellow:#eab308;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.04);
+  --shadow:0 4px 16px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.1),0 4px 12px rgba(0,0,0,0.06);
+  --radius:12px;
+  --radius-sm:8px;
+  --radius-lg:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans Thai','Sarabun',sans-serif;font-size:15px;line-height:1.65;min-height:100vh;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;}
+
+/* ====== NAVBAR ====== */
+#navbar{
+  position:sticky;top:0;z-index:100;
+  background:var(--white);
+  border-bottom:1.5px solid var(--border);
+  box-shadow:var(--shadow-sm);
+}
+.nav-inner{
+  max-width:1100px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;height:60px;gap:8px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:9px;
+  font-weight:800;font-size:1.2rem;color:var(--text);
+  margin-right:24px;cursor:pointer;flex-shrink:0;
+}
+.logo-emoji{font-size:1.5rem;}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;}
+.nav-link{
+  padding:7px 14px;border-radius:var(--radius-sm);
+  font-size:0.9rem;font-weight:500;color:var(--muted);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.nav-link:hover{color:var(--text);background:var(--bg);}
+.nav-link.active{color:var(--orange);font-weight:600;}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+
+/* ====== BUTTONS ====== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:inherit;font-size:0.9rem;font-weight:600;
+  padding:9px 20px;border-radius:var(--radius-sm);
+  border:1.5px solid transparent;cursor:pointer;
+  transition:all .18s;white-space:nowrap;
+}
+.btn:active{transform:scale(0.97);}
+.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange);}
+.btn-orange:hover{background:var(--orange-hover);border-color:var(--orange-hover);box-shadow:0 4px 14px rgba(249,115,22,0.35);}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--border2);}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-light);}
+.btn-ghost{background:transparent;color:var(--muted);border-color:transparent;}
+.btn-ghost:hover{background:var(--bg);color:var(--text);}
+.btn-sm{padding:6px 14px;font-size:0.83rem;}
+.btn-lg{padding:13px 28px;font-size:1rem;}
+.btn-discord{background:#5865F2;color:#fff;border-color:#5865F2;}
+.btn-discord:hover{background:#4752c4;box-shadow:0 4px 14px rgba(88,101,242,0.35);}
+.btn-white{background:#fff;color:var(--text);border-color:var(--border);}
+.btn-white:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ====== PAGES ====== */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ====== HOME ====== */
+.hero-section{
+  background:var(--white);
+  border-bottom:1.5px solid var(--border);
+  padding:0;
+  overflow:hidden;
+}
+.hero-inner{
+  max-width:1100px;margin:0 auto;padding:52px 24px 52px;
+  display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;
+}
+@media(max-width:840px){.hero-inner{grid-template-columns:1fr;padding:36px 20px;}}
+
+.hero-left{}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange-light);color:var(--orange);
+  border:1.5px solid rgba(249,115,22,0.25);
+  border-radius:99px;padding:4px 14px;font-size:0.8rem;font-weight:600;
+  margin-bottom:18px;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,2.9rem);font-weight:800;line-height:1.2;
+  margin-bottom:16px;letter-spacing:-0.01em;
+}
+.hero h1 span{color:var(--orange);}
+.hero-desc{
+  color:var(--muted);font-size:1rem;max-width:460px;
+  margin-bottom:28px;line-height:1.7;
+}
+.hero-desc strong{color:var(--text);}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* mascot box */
+.hero-right{
+  background:var(--bg);
+  border:2px dashed var(--border2);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;min-height:280px;position:relative;
+}
+.speech-bubble{
+  background:#fff;
+  border:2px solid var(--border);
+  border-radius:18px 18px 18px 4px;
+  padding:12px 18px;
+  font-size:1rem;font-weight:700;text-align:center;
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  max-width:220px;
+}
+.speech-bubble::after{
+  content:'';position:absolute;bottom:-10px;left:18px;
+  border:5px solid transparent;border-top-color:var(--border);
+  border-top-width:10px;
+}
+.mascot-row{display:flex;align-items:flex-end;gap:16px;justify-content:center;}
+.mascot-emoji{font-size:4.5rem;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1));}
+.mascot-items{display:flex;flex-direction:column;gap:8px;}
+.mascot-item{
+  display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;
+  background:#fff;border:1.5px solid var(--border);border-radius:99px;
+  padding:5px 12px;box-shadow:var(--shadow-sm);
+}
+.mascot-store{font-size:2.5rem;margin-top:4px;}
+
+/* stat strip */
+.stat-strip{
+  background:var(--white);border-top:1.5px solid var(--border);
+  border-bottom:1.5px solid var(--border);
+}
+.stat-strip-inner{
+  max-width:1100px;margin:0 auto;padding:24px;
+  display:flex;gap:0;
+}
+.stat-item{
+  flex:1;text-align:center;padding:0 16px;
+  border-right:1.5px solid var(--border);
+}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-size:1.7rem;font-weight:800;color:var(--orange);display:block;line-height:1.2;}
+.stat-lbl{font-size:0.8rem;color:var(--muted);margin-top:2px;}
+@media(max-width:600px){.stat-strip-inner{flex-wrap:wrap;}.stat-item{min-width:50%;border-right:none;border-bottom:1.5px solid var(--border);padding:12px;}.stat-item:nth-last-child(-n+2){border-bottom:none;}}
+
+/* cards section */
+.section{max-width:1100px;margin:0 auto;padding:48px 24px;}
+.section-header{margin-bottom:28px;}
+.section-header h2{font-size:1.4rem;font-weight:800;margin-bottom:6px;}
+.section-header p{color:var(--muted);font-size:0.92rem;}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:20px;
+  transition:all .2s;cursor:pointer;
+}
+.card:hover{border-color:var(--orange);box-shadow:var(--shadow);transform:translateY(-2px);}
+.card-icon{font-size:2rem;margin-bottom:12px;}
+.card h3{font-size:0.95rem;font-weight:700;margin-bottom:4px;}
+.card p{color:var(--muted);font-size:0.83rem;line-height:1.5;}
+
+/* ====== MAP ====== */
+.map-page{max-width:1100px;margin:0 auto;padding:48px 24px;}
+.map-container{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.map-svg{width:100%;display:block;}
+.region{transition:opacity .2s,filter .2s;cursor:pointer;}
+.region:hover{opacity:0.85;filter:brightness(1.1);}
+.map-panel{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:20px;margin-top:14px;
+  display:none;box-shadow:var(--shadow-sm);
+}
+.map-panel.show{display:block;}
+.panel-title{font-size:1.1rem;font-weight:800;margin-bottom:6px;}
+.panel-desc{color:var(--muted);font-size:0.9rem;margin-bottom:12px;}
+.tags{display:flex;gap:6px;flex-wrap:wrap;}
+.tag{
+  font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:99px;
+  background:var(--bg);border:1.5px solid var(--border);color:var(--muted);
+}
+.tag-orange{background:var(--orange-light);border-color:rgba(249,115,22,0.3);color:var(--orange);}
+.tag-blue{background:var(--blue-light);border-color:rgba(59,130,246,0.3);color:var(--blue);}
+.tag-green{background:var(--green-light);border-color:rgba(34,197,94,0.3);color:var(--green);}
+.tag-purple{background:var(--purple-light);border-color:rgba(139,92,246,0.3);color:var(--purple);}
+.map-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;}
+.leg{display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--muted);}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+/* ====== WORKS ====== */
+.works-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.work-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .2s;}
+.work-card:hover{border-color:var(--orange);box-shadow:var(--shadow);transform:translateY(-2px);}
+.work-thumb{
+  height:140px;background:var(--bg);border-bottom:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:3.5rem;
+  position:relative;
+}
+.work-version{
+  position:absolute;top:10px;right:10px;font-size:0.72rem;font-weight:600;
+  background:#fff;border:1.5px solid var(--border);border-radius:99px;padding:2px 8px;color:var(--muted);
+}
+.work-body{padding:18px;}
+.work-body h3{font-size:0.95rem;font-weight:700;margin-bottom:5px;}
+.work-body p{color:var(--muted);font-size:0.85rem;margin-bottom:12px;line-height:1.55;}
+.work-tags{display:flex;gap:5px;flex-wrap:wrap;}
+
+/* ====== ACTIVITIES ====== */
+.act-list{display:flex;flex-direction:column;gap:12px;}
+.act-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:20px 24px;
+  display:flex;align-items:flex-start;gap:20px;
+  transition:all .2s;
+}
+.act-card:hover{border-color:var(--orange);box-shadow:var(--shadow-sm);}
+.act-date-box{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);padding:8px 12px;text-align:center;
+  min-width:60px;flex-shrink:0;
+}
+.act-day{font-size:1.5rem;font-weight:800;line-height:1;display:block;}
+.act-mon{font-size:0.72rem;color:var(--muted);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;}
+.act-content{flex:1;}
+.act-content h3{font-size:0.98rem;font-weight:700;margin-bottom:5px;}
+.act-content p{color:var(--muted);font-size:0.87rem;margin-bottom:10px;}
+.act-right{flex-shrink:0;}
+.badge{display:inline-block;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:99px;border:1.5px solid transparent;}
+.badge-open{background:var(--green-light);color:var(--green);border-color:rgba(34,197,94,0.3);}
+.badge-soon{background:#fef9c3;color:var(--yellow);border-color:rgba(234,179,8,0.3);}
+.badge-done{background:var(--bg);color:var(--muted2);border-color:var(--border);}
+@media(max-width:560px){.act-card{flex-direction:column;gap:12px;}.act-right{align-self:flex-start;}}
+
+/* ====== SERVICES ====== */
+.services-page-inner{max-width:1100px;margin:0 auto;padding:48px 24px;}
+.login-notice{
+  background:var(--orange-light);border:1.5px solid rgba(249,115,22,0.25);
+  border-radius:var(--radius);padding:16px 20px;
+  display:flex;align-items:center;gap:14px;margin-bottom:28px;
+}
+.login-notice p{font-size:0.9rem;color:var(--text);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.svc-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:22px;
+  transition:all .2s;
+}
+.svc-card:hover{border-color:var(--orange);box-shadow:var(--shadow);transform:translateY(-2px);}
+.svc-icon{font-size:2rem;margin-bottom:14px;}
+.svc-card h3{font-size:0.95rem;font-weight:700;margin-bottom:6px;}
+.svc-card p{color:var(--muted);font-size:0.85rem;margin-bottom:16px;line-height:1.5;}
+.svc-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1.5px solid var(--border);}
+.online-dot{display:flex;align-items:center;gap:5px;font-size:0.75rem;font-weight:600;color:var(--green);}
+.online-dot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 2px rgba(34,197,94,0.2);display:block;animation:ping 2s ease infinite;}
+@keyframes ping{50%{box-shadow:0 0 0 5px rgba(34,197,94,0.1);}}
+.connected-label{font-size:0.75rem;font-weight:600;color:var(--green);display:flex;align-items:center;gap:4px;}
+
+/* ====== ECONOMY DASHBOARD (in-page) ====== */
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px;}
+@media(max-width:540px){.dash-grid{grid-template-columns:1fr 1fr;}}
+.dash-tile{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;}
+.dash-tile .lbl{font-size:0.75rem;font-weight:600;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px;}
+.dash-tile .val{font-size:1.6rem;font-weight:800;color:var(--orange);line-height:1.2;}
+.dash-tile .sub{font-size:0.78rem;color:var(--green);margin-top:2px;}
+.txn-table{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.txn-table table{width:100%;border-collapse:collapse;}
+.txn-table th{background:var(--bg);font-size:0.75rem;font-weight:700;color:var(--muted);text-align:left;padding:10px 14px;border-bottom:1.5px solid var(--border);letter-spacing:0.04em;}
+.txn-table td{padding:11px 14px;font-size:0.87rem;border-bottom:1.5px solid var(--border);}
+.txn-table tr:last-child td{border-bottom:none;}
+.txn-table tr:hover td{background:#fafafa;}
+.in{color:var(--green);font-weight:700;}
+.out{color:var(--red);font-weight:700;}
+
+/* ====== AI CHAT ====== */
+.ai-wrap{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+}
+.ai-header{
+  background:var(--bg);border-bottom:1.5px solid var(--border);
+  padding:14px 18px;display:flex;align-items:center;gap:10px;
+}
+.ai-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.ai-header-info h4{font-size:0.9rem;font-weight:700;line-height:1.2;}
+.ai-header-info p{font-size:0.75rem;color:var(--muted);}
+.ai-messages{padding:16px;height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;}
+.msg{max-width:78%;font-size:0.88rem;line-height:1.5;}
+.msg-bot{align-self:flex-start;}
+.msg-bot-bubble{background:var(--bg);border:1.5px solid var(--border);border-radius:12px 12px 12px 3px;padding:8px 12px;}
+.msg-user{align-self:flex-end;}
+.msg-user-bubble{background:var(--orange);color:#fff;border-radius:12px 12px 3px 12px;padding:8px 12px;}
+.ai-input-row{border-top:1.5px solid var(--border);padding:12px 14px;display:flex;gap:8px;}
+.ai-input-row input{
+  flex:1;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 12px;font-family:inherit;font-size:0.9rem;outline:none;background:var(--bg);
+  transition:border-color .15s;
+}
+.ai-input-row input:focus{border-color:var(--orange);}
+
+/* ====== LOGIN ====== */
+.login-page{
+  min-height:calc(100vh - 60px);display:flex;align-items:center;
+  justify-content:center;padding:40px 24px;background:var(--bg);
+}
+.login-box{
+  width:100%;max-width:400px;
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:32px;
+  box-shadow:var(--shadow);
+}
+.login-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.1rem;margin-bottom:22px;}
+.login-box h2{font-size:1.4rem;font-weight:800;margin-bottom:4px;}
+.login-box .sub{color:var(--muted);font-size:0.9rem;margin-bottom:24px;}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:5px;}
+.form-group input{
+  width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:10px 13px;font-family:inherit;font-size:0.93rem;outline:none;
+  transition:border-color .15s;background:var(--white);color:var(--text);
+}
+.form-group input:focus{border-color:var(--orange);}
+.form-group input::placeholder{color:var(--muted2);}
+.login-full{width:100%;justify-content:center;padding:11px;font-size:0.95rem;}
+.divider{display:flex;align-items:center;gap:10px;margin:16px 0;font-size:0.82rem;color:var(--muted2);}
+.divider::before,.divider::after{content:'';flex:1;height:1.5px;background:var(--border);}
+.login-footer{margin-top:18px;text-align:center;font-size:0.85rem;color:var(--muted);}
+.link-text{color:var(--orange);cursor:pointer;font-weight:600;}
+.link-text:hover{text-decoration:underline;}
+
+/* ====== PROFILE BAR ====== */
+.profile-bar{
+  background:var(--white);border-bottom:1.5px solid var(--border);
+  padding:16px 24px;
+}
+.profile-bar-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;}
+.avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),#f59e0b);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:800;color:#fff;flex-shrink:0;
+  border:2px solid rgba(249,115,22,0.25);
+}
+.profile-info h3{font-size:1rem;font-weight:700;}
+.profile-info p{font-size:0.78rem;color:var(--muted);}
+.badges{display:flex;gap:5px;margin-top:4px;}
+
+/* ====== NAV USER ====== */
+.nav-user{display:flex;align-items:center;gap:8px;}
+.nav-avatar{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),#f59e0b);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.8rem;font-weight:800;color:#fff;cursor:pointer;
+}
+
+/* ====== MODAL ====== */
+.modal-bg{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.45);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-bg.show{display:flex;}
+.modal{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:28px;width:100%;max-width:640px;max-height:85vh;overflow-y:auto;box-shadow:var(--shadow-lg);}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.modal-header h3{font-size:1.15rem;font-weight:800;}
+
+/* ====== TOAST ====== */
+#toast{
+  position:fixed;bottom:20px;right:20px;z-index:300;
+  background:var(--text);color:#fff;
+  border-radius:var(--radius-sm);padding:11px 18px;
+  font-size:0.85rem;font-weight:600;
+  box-shadow:var(--shadow-lg);
+  transform:translateY(70px);opacity:0;pointer-events:none;
+  transition:all .28s cubic-bezier(.34,1.56,.64,1);
+}
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* ====== FOOTER ====== */
+footer{
+  background:var(--white);border-top:1.5px solid var(--border);
+  padding:24px;text-align:center;
+  color:var(--muted);font-size:0.83rem;margin-top:auto;
+}
+footer strong{color:var(--orange);}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:600px){
+  .nav-links .nav-link:nth-child(n+5){display:none;}
+  .hero h1{font-size:1.7rem;}
+}
+@media(max-width:460px){.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="goto('home')">
+      <span class="logo-emoji">📦</span>
+      <span>B<span style="color:var(--orange)">o</span>xxland</span>
+    </div>
+    <div class="nav-links">
+      <div class="nav-link active" onclick="goto('home')" data-page="home">หน้าแรก</div>
+      <div class="nav-link" onclick="goto('map')" data-page="map">แผนที่</div>
+      <div class="nav-link" onclick="goto('works')" data-page="works">ผลงาน</div>
+      <div class="nav-link" onclick="goto('activities')" data-page="activities">กิจกรรม</div>
+      <div class="nav-link" onclick="goto('services')" data-page="services">บริการ</div>
+    </div>
+    <div class="nav-right" id="navRight">
+      <button class="btn btn-ghost btn-sm" onclick="goto('login')">เข้าสู่ระบบ</button>
+      <button class="btn btn-orange btn-sm" onclick="goto('register')">ลงทะเบียน</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== HOME ======== -->
+<div id="page-home" class="page active">
+  <div class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">🌍 ประเทศจินตนาการ #1</div>
+        <h1 class="hero">กล่องแลนด์<br><span>(Boxxland)</span> คือ<br>ประเทศจินตนาการ</h1>
+        <p class="hero-desc">
+          ที่ทุกคนสามารถมาคุย เล่น ถาม และ<strong>Role play กัน!</strong><br>
+          คุยก็ได้ Role play ก็ยิ่งสนุก — มาเป็นส่วนหนึ่งของราชอาณาจักรนี้กัน
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-orange btn-lg" onclick="goto('login')">📝 ลงทะเบียนวันนี้</button>
+          <button class="btn btn-outline btn-lg" onclick="goto('map')">🗺️ ดูแผนที่</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="speech-bubble">คุยก็ได้<br>Role play ก็ยิ่งสนุก 🎭</div>
+        <div class="mascot-row">
+          <div class="mascot-emoji">🐱</div>
+          <div>
+            <div class="mascot-store">🏪</div>
+            <div class="mascot-items">
+              <div class="mascot-item">📦 กล่องแดง</div>
+              <div class="mascot-item">🏅 พลเมือง</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-strip-inner">
+      <div class="stat-item"><span class="stat-num">4</span><div class="stat-lbl">บอทในเครือ</div></div>
+      <div class="stat-item"><span class="stat-num">24/7</span><div class="stat-lbl">ออนไลน์ตลอด</div></div>
+      <div class="stat-item"><span class="stat-num">∞</span><div class="stat-lbl">ความสนุก</div></div>
+      <div class="stat-item"><span class="stat-num">1</span><div class="stat-lbl">ราชอาณาจักร</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>สำรวจ Boxxland</h2>
+      <p>ทุกสิ่งที่ราชอาณาจักรมีให้พลเมือง</p>
+    </div>
+    <div class="card-grid">
+      <div class="card" onclick="goto('map')">
+        <div class="card-icon">🗺️</div>
+        <h3>แผนที่ประเทศ</h3>
+        <p>สำรวจดินแดนและเขตต่างๆ ของ Boxxland</p>
+      </div>
+      <div class="card" onclick="goto('services')">
+        <div class="card-icon">⚙️</div>
+        <h3>บริการของรัฐ</h3>
+        <p>ระบบเศรษฐกิจ, AI, support และอื่นๆ</p>
+      </div>
+      <div class="card" onclick="goto('activities')">
+        <div class="card-icon">🎯</div>
+        <h3>กิจกรรม</h3>
+        <p>อีเวนต์และกิจกรรมของพลเมือง</p>
+      </div>
+      <div class="card" onclick="goto('works')">
+        <div class="card-icon">🛠️</div>
+        <h3>ผลงาน</h3>
+        <p>โปรเจกต์และบอทที่สร้างไว้</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== MAP ======== -->
+<div id="page-map" class="page">
+  <div class="map-page">
+    <div class="section-header">
+      <h2>🗺️ แผนที่ Boxxland</h2>
+      <p>ราชอาณาจักรแบ่งออกเป็น 5 เขตปกครอง — คลิกที่ดินแดนเพื่อดูข้อมูล</p>
+    </div>
+    <div class="map-container">
+      <svg class="map-svg" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="1" fill="rgba(0,0,0,0.06)"/>
+          </pattern>
+        </defs>
+        <rect width="900" height="480" fill="#e8f4f8"/>
+        <rect width="900" height="480" fill="url(#dots)"/>
+
+        <!-- NOVA CORE (capital) -->
+        <polygon class="region" data-r="nova"
+          points="360,100 490,85 550,180 510,290 390,305 315,225 330,145"
+          fill="#fde68a" stroke="#f59e0b" stroke-width="2" onclick="showR('nova')"/>
+        <text x="425" y="195" text-anchor="middle" font-size="13" font-weight="700" font-family="Noto Sans Thai" fill="#92400e">NOVA CORE</text>
+        <text x="425" y="212" text-anchor="middle" font-size="10" font-family="Noto Sans Thai" fill="#b45309">🏛️ เมืองหลวง</text>
+        <circle cx="425" cy="175" r="5" fill="#f59e0b">
+          <animate attributeName="r" values="5;9;5" dur="2.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- HEXPORT -->
+        <polygon class="region" data-r="hexport"
+          points="550,180 640,148 715,220 695,320 570,340 510,290"
+          fill="#bbf7d0" stroke="#22c55e" stroke-width="2" onclick="showR('hexport')"/>
+        <text x="615" y="255" text-anchor="middle" font-size="12" font-weight="700" font-family="Noto Sans Thai" fill="#14532d">HEXPORT</text>
+        <text x="615" y="270" text-anchor="middle" font-size="9" font-family="Noto Sans Thai" fill="#166534">🏪 ค้าขาย</text>
+
+        <!-- GLITCH DISTRICT -->
+        <polygon class="region" data-r="glitch"
+          points="315,225 390,305 362,410 235,428 195,338 252,258"
+          fill="#ddd6fe" stroke="#8b5cf6" stroke-width="2" onclick="showR('glitch')"/>
+        <text x="282" y="340" text-anchor="middle" font-size="12" font-weight="700" font-family="Noto Sans Thai" fill="#3730a3">GLITCH</text>
+        <text x="282" y="355" text-anchor="middle" font-size="9" font-family="Noto Sans Thai" fill="#4338ca">🎨 สร้างสรรค์</text>
+
+        <!-- DATAFORGE -->
+        <polygon class="region" data-r="dataforge"
+          points="195,145 315,125 330,145 315,225 252,258 180,228 162,170"
+          fill="#bfdbfe" stroke="#3b82f6" stroke-width="2" onclick="showR('dataforge')"/>
+        <text x="240" y="192" text-anchor="middle" font-size="12" font-weight="700" font-family="Noto Sans Thai" fill="#1e3a8a">DATAFORGE</text>
+        <text x="240" y="207" text-anchor="middle" font-size="9" font-family="Noto Sans Thai" fill="#1d4ed8">⚙️ เขตบอท</text>
+
+        <!-- OUTLANDS -->
+        <polygon class="region" data-r="outlands"
+          points="570,340 695,320 745,420 648,462 470,455 362,410 390,305 510,290"
+          fill="#f3f4f6" stroke="#d1d5db" stroke-width="2" onclick="showR('outlands')"/>
+        <text x="555" y="398" text-anchor="middle" font-size="12" font-weight="700" font-family="Noto Sans Thai" fill="#6b7280">OUTLANDS</text>
+        <text x="555" y="413" text-anchor="middle" font-size="9" font-family="Noto Sans Thai" fill="#9ca3af">🌑 รกร้าง</text>
+
+        <!-- roads -->
+        <line x1="425" y1="175" x2="615" y2="245" stroke="rgba(249,115,22,0.3)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="425" y1="175" x2="240" y2="192" stroke="rgba(249,115,22,0.3)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="425" y1="175" x2="282" y2="340" stroke="rgba(249,115,22,0.3)" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+        <!-- compass -->
+        <g transform="translate(820,50)">
+          <circle r="22" fill="white" stroke="#e4e7ed" stroke-width="1.5"/>
+          <text text-anchor="middle" y="-8" font-size="9" font-weight="700" fill="#374151" font-family="sans-serif">N</text>
+          <text text-anchor="middle" y="14" font-size="9" fill="#9ca3af" font-family="sans-serif">S</text>
+          <text text-anchor="start" x="9" y="3" font-size="9" fill="#9ca3af" font-family="sans-serif">E</text>
+          <text text-anchor="end" x="-9" y="3" font-size="9" fill="#9ca3af" font-family="sans-serif">W</text>
+          <line x1="0" y1="-14" x2="0" y2="14" stroke="#374151" stroke-width="1"/>
+          <line x1="-14" y1="0" x2="14" y2="0" stroke="#9ca3af" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+    <div class="map-legend">
+      <div class="leg"><div class="leg-dot" style="background:#f59e0b;"></div>NOVA CORE — เมืองหลวง</div>
+      <div class="leg"><div class="leg-dot" style="background:#22c55e;"></div>HEXPORT — ค้าขาย</div>
+      <div class="leg"><div class="leg-dot" style="background:#8b5cf6;"></div>GLITCH — สร้างสรรค์</div>
+      <div class="leg"><div class="leg-dot" style="background:#3b82f6;"></div>DATAFORGE — เขตบอท</div>
+      <div class="leg"><div class="leg-dot" style="background:#d1d5db;"></div>OUTLANDS — รกร้าง</div>
+    </div>
+    <div class="map-panel" id="mapPanel">
+      <div class="panel-title" id="panelTitle">—</div>
+      <div class="panel-desc" id="panelDesc">—</div>
+      <div class="tags" id="panelTags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== WORKS ======== -->
+<div id="page-works" class="page">
+  <div class="section">
+    <div class="section-header">
+      <h2>🛠️ ผลงานของ Boxxland</h2>
+      <p>บอทและโปรเจกต์ที่สร้างขึ้นในราชอาณาจักร</p>
+    </div>
+    <div class="works-grid">
+      <div class="work-card">
+        <div class="work-thumb">🤖<span class="work-version">v2.1.0</span></div>
+        <div class="work-body">
+          <h3>Skibidri AI</h3>
+          <p>AI chatbot ขับเคลื่อนด้วย Gemini รองรับ text, voice, image gen และ admin panel ต่อ guild</p>
+          <div class="work-tags"><span class="tag tag-orange">Gemini</span><span class="tag">Discord.js</span><span class="tag tag-blue">Voice</span></div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb">💹<span class="work-version">v1.3.2</span></div>
+        <div class="work-body">
+          <h3>D-DJ-Chinid Economy</h3>
+          <p>ระบบเศรษฐกิจจำลองบน Discord ซื้อขายหุ้น สะสม BXC แข่ง leaderboard</p>
+          <div class="work-tags"><span class="tag tag-green">Economy</span><span class="tag">Stocks</span><span class="tag">SQLite</span></div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb">🎫<span class="work-version">v1.1.0</span></div>
+        <div class="work-body">
+          <h3>Support Ticket Bot</h3>
+          <p>ระบบตั๋วช่วยเหลืออัตโนมัติ สร้าง channel, ping admin, ปิดตั๋ว</p>
+          <div class="work-tags"><span class="tag">Ticket</span><span class="tag">Auto Channel</span></div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb">🛡️<span class="work-version">v1.2.0</span></div>
+        <div class="work-body">
+          <h3>Guardian (AntiRaid)</h3>
+          <p>ระบบรักษาความปลอดภัย server anti-spam, anti-raid, age check, auto-lock</p>
+          <div class="work-tags"><span class="tag tag-orange">Security</span><span class="tag">Anti-Raid</span></div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb">🎮<span class="work-version">alpha</span></div>
+        <div class="work-body">
+          <h3>Boxxland Game (WIP)</h3>
+          <p>เกม RPG กำลังพัฒนาด้วย Lua + LÖVE2D ยังอยู่ช่วง prototype</p>
+          <div class="work-tags"><span class="tag">Lua</span><span class="tag">LÖVE2D</span><span class="tag" style="color:var(--yellow);border-color:rgba(234,179,8,0.4);background:#fef9c3;">WIP</span></div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb">🌐<span class="work-version">live</span></div>
+        <div class="work-body">
+          <h3>Boxxland Web Portal</h3>
+          <p>เว็บไซต์ประเทศจินตนาการนี้แหละ สร้างด้วย HTML/CSS/JS ล้วนๆ</p>
+          <div class="work-tags"><span class="tag tag-orange">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== ACTIVITIES ======== -->
+<div id="page-activities" class="page">
+  <div class="section">
+    <div class="section-header">
+      <h2>🎯 กิจกรรมของ Boxxland</h2>
+      <p>อีเวนต์และกิจกรรมที่เกิดขึ้นในราชอาณาจักร</p>
+    </div>
+    <div class="act-list">
+      <div class="act-card">
+        <div class="act-date-box"><span class="act-day">22</span><span class="act-mon">JUN</span></div>
+        <div class="act-content">
+          <h3>Boxxland Economy Season 2 🚀</h3>
+          <p>เปิดฤดูกาลใหม่ระบบเศรษฐกิจ ล้างกระดาน ปรับ stock ใหม่ แจกเงินเริ่มต้น</p>
+          <div class="tags"><span class="tag tag-green">Economy</span><span class="tag">D-DJ-Chinid</span></div>
+        </div>
+        <div class="act-right"><span class="badge badge-open">เปิดอยู่</span></div>
+      </div>
+      <div class="act-card">
+        <div class="act-date-box"><span class="act-day">30</span><span class="act-mon">JUN</span></div>
+        <div class="act-content">
+          <h3>AI Art Contest — ประกวดภาพ AI 🎨</h3>
+          <p>ใช้ Skibidri AI gen ภาพส่งประกวด ธีม "Boxxland in 2099" รางวัลสูงสุด 5,000 BXC</p>
+          <div class="tags"><span class="tag tag-purple">AI Art</span><span class="tag tag-orange">รางวัล</span></div>
+        </div>
+        <div class="act-right"><span class="badge badge-soon">เร็วๆ นี้</span></div>
+      </div>
+      <div class="act-card">
+        <div class="act-date-box"><span class="act-day">15</span><span class="act-mon">JUL</span></div>
+        <div class="act-content">
+          <h3>Bot Dev Workshop 🛠️</h3>
+          <p>workshop สอนสร้าง Discord bot ตั้งแต่ต้น — รัน PM2 บน Termux และ slash commands</p>
+          <div class="tags"><span class="tag">Workshop</span><span class="tag">Termux</span><span class="tag">PM2</span></div>
+        </div>
+        <div class="act-right"><span class="badge badge-soon">เร็วๆ นี้</span></div>
+      </div>
+      <div class="act-card">
+        <div class="act-date-box"><span class="act-day">01</span><span class="act-mon">JUN</span></div>
+        <div class="act-content">
+          <h3>Boxxland ครบรอบ 1 ปี 🎂</h3>
+          <p>ฉลองครบรอบราชอาณาจักร แจกรางวัลพลเมืองดีเด่น สรุปสิ่งที่สร้างมา</p>
+          <div class="tags"><span class="tag">Anniversary</span></div>
+        </div>
+        <div class="act-right"><span class="badge badge-done">จบแล้ว</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SERVICES ======== -->
+<div id="page-services" class="page">
+  <!-- GUEST -->
+  <div id="svcGuest">
+    <div class="services-page-inner">
+      <div class="section-header">
+        <h2>⚙️ บริการของ Boxxland</h2>
+        <p>เข้าสู่ระบบเพื่อเชื่อมต่อและใช้บริการของราชอาณาจักร</p>
+      </div>
+      <div class="login-notice">
+        <span style="font-size:1.5rem;">🔐</span>
+        <p>เข้าสู่ระบบเพื่อเชื่อมต่อบอทและดูข้อมูลของคุณ</p>
+        <button class="btn btn-orange btn-sm" onclick="goto('login')" style="margin-left:auto;flex-shrink:0;">เข้าสู่ระบบ</button>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card">
+          <div class="svc-icon">💹</div>
+          <h3>D-DJ-Chinid Economy</h3>
+          <p>ดูยอดเงิน BXC, ประวัติธุรกรรม, พอร์ตหุ้น real-time</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><span class="tag">ต้องเข้าสู่ระบบ</span></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon">🤖</div>
+          <h3>Skibidri AI</h3>
+          <p>คุยกับ AI, gen ภาพ, ดูประวัติการใช้งาน</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><span class="tag">ต้องเข้าสู่ระบบ</span></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon">🎫</div>
+          <h3>Support Portal</h3>
+          <p>เปิดตั๋ว ติดตามสถานะ ติดต่อทีมงาน</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><span class="tag">ต้องเข้าสู่ระบบ</span></div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon">🛡️</div>
+          <h3>Guardian Status</h3>
+          <p>สถานะ antispam/antiraid ของ server</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><span class="tag">ต้องเข้าสู่ระบบ</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGGED IN -->
+  <div id="svcLoggedIn" style="display:none;">
+    <div class="profile-bar">
+      <div class="profile-bar-in">
+        <div class="avatar" id="profAvatar">M</div>
+        <div class="profile-info">
+          <h3 id="profName">Moodeng</h3>
+          <p id="profId">BXL#0001 · พลเมือง Boxxland</p>
+          <div class="badges">
+            <span class="badge badge-open">CITIZEN</span>
+            <span class="badge badge-soon">BOT DEV</span>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="logout()" style="margin-left:auto;">ออกจากระบบ</button>
+      </div>
+    </div>
+    <div class="services-page-inner">
+      <div class="section-header"><h2>บริการที่เชื่อมต่อ</h2></div>
+      <div class="services-grid">
+        <div class="svc-card" onclick="document.getElementById('econModal').classList.add('show')" style="cursor:pointer;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+            <div class="svc-icon" style="margin-bottom:0;">💹</div>
+            <span class="connected-label">✓ เชื่อมต่อแล้ว</span>
+          </div>
+          <h3>D-DJ-Chinid Economy</h3>
+          <p>ดูยอดเงิน BXC, ประวัติธุรกรรม, พอร์ตหุ้น</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><button class="btn btn-outline btn-sm">เปิด Dashboard</button></div>
+        </div>
+        <div class="svc-card" onclick="document.getElementById('aiModal').classList.add('show')" style="cursor:pointer;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+            <div class="svc-icon" style="margin-bottom:0;">🤖</div>
+            <span class="connected-label">✓ เชื่อมต่อแล้ว</span>
+          </div>
+          <h3>Skibidri AI</h3>
+          <p>คุยกับ AI, gen ภาพ, ดูประวัติ</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><button class="btn btn-outline btn-sm">เปิด Chat</button></div>
+        </div>
+        <div class="svc-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+            <div class="svc-icon" style="margin-bottom:0;">🎫</div>
+            <span class="tag">ยังไม่เชื่อมต่อ</span>
+          </div>
+          <h3>Support Portal</h3>
+          <p>เปิดตั๋ว ติดตามสถานะ ติดต่อทีมงาน</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><button class="btn btn-orange btn-sm" onclick="event.stopPropagation();showToast('เชื่อมต่อ Support Portal แล้ว ✓')">เชื่อมต่อ</button></div>
+        </div>
+        <div class="svc-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+            <div class="svc-icon" style="margin-bottom:0;">🛡️</div>
+            <span class="tag">ยังไม่เชื่อมต่อ</span>
+          </div>
+          <h3>Guardian Status</h3>
+          <p>สถานะ antispam/antiraid ของ server</p>
+          <div class="svc-footer"><div class="online-dot">ONLINE</div><button class="btn btn-orange btn-sm" onclick="event.stopPropagation();showToast('เชื่อมต่อ Guardian แล้ว ✓')">เชื่อมต่อ</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== LOGIN ======== -->
+<div id="page-login" class="page">
+  <div class="login-page">
+    <div class="login-box">
+      <div class="login-logo"><span style="font-size:1.6rem;">📦</span>Boxxland</div>
+      <h2>เข้าสู่ระบบ</h2>
+      <p class="sub">เข้าถึงบริการและข้อมูลพลเมือง Boxxland</p>
+      <div class="form-group">
+        <label>Username หรือ Email</label>
+        <input type="text" id="loginUser" placeholder="moodeng / user@boxxland.bx"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
+      </div>
+      <button class="btn btn-orange login-full" onclick="doLogin()">เข้าสู่ระบบ</button>
+      <div class="divider">หรือ</div>
+      <button class="btn btn-discord login-full" onclick="doLogin('discord')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+        เข้าสู่ระบบด้วย Discord
+      </button>
+      <p class="login-footer">ยังไม่มีบัญชี? <span class="link-text" onclick="goto('register')">ลงทะเบียน</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======== REGISTER ======== -->
+<div id="page-register" class="page">
+  <div class="login-page">
+    <div class="login-box">
+      <div class="login-logo"><span style="font-size:1.6rem;">📦</span>Boxxland</div>
+      <h2>ลงทะเบียน</h2>
+      <p class="sub">สมัครเป็นพลเมือง Boxxland วันนี้</p>
+
+      <button class="btn btn-discord login-full" onclick="doRegister('discord')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+        สมัครด้วย Discord
+      </button>
+
+      <div class="divider">หรือกรอกฟอร์ม</div>
+
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="regUser" placeholder="moodeng"/>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="regEmail" placeholder="user@boxxland.bx"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="regPass" placeholder="••••••••"/>
+      </div>
+      <div class="form-group">
+        <label>ยืนยัน Password</label>
+        <input type="password" id="regPass2" placeholder="••••••••" onkeydown="if(event.key==='Enter')doRegister()"/>
+      </div>
+      <button class="btn btn-orange login-full" onclick="doRegister()">สมัครสมาชิก</button>
+
+      <p class="login-footer">มีบัญชีอยู่แล้ว? <span class="link-text" onclick="goto('login')">เข้าสู่ระบบ</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ECONOMY MODAL -->
+<div class="modal-bg" id="econModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>💹 D-DJ-Chinid Economy Dashboard</h3>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('econModal').classList.remove('show')">✕</button>
+    </div>
+    <div class="dash-grid">
+      <div class="dash-tile"><div class="lbl">BXC BALANCE</div><div class="val">12,450</div><div class="sub">+320 จากเมื่อวาน</div></div>
+      <div class="dash-tile"><div class="lbl">PORTFOLIO</div><div class="val" style="color:var(--green);">8,200</div><div class="sub" style="color:var(--muted);">3 หุ้นในพอร์ต</div></div>
+      <div class="dash-tile"><div class="lbl">RANK</div><div class="val" style="color:var(--blue);">#7</div><div class="sub" style="color:var(--muted);">จาก 42 พลเมือง</div></div>
+    </div>
+    <div class="txn-table">
+      <table>
+        <thead><tr><th>วันที่</th><th>รายการ</th><th>จำนวน</th><th>ประเภท</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--muted);font-size:0.82rem;">17/06</td><td>รับเงินรายวัน</td><td class="in">+100 BXC</td><td><span class="tag tag-green">รับ</span></td></tr>
+          <tr><td style="color:var(--muted);font-size:0.82rem;">16/06</td><td>ซื้อ BXL Stock</td><td class="out">-500 BXC</td><td><span class="tag">ซื้อ</span></td></tr>
+          <tr><td style="color:var(--muted);font-size:0.82rem;">16/06</td><td>ขาย NOVA Stock</td><td class="in">+720 BXC</td><td><span class="tag tag-orange">ขาย</span></td></tr>
+          <tr><td style="color:var(--muted);font-size:0.82rem;">15/06</td><td>รับจากกิจกรรม</td><td class="in">+1,000 BXC</td><td><span class="tag tag-purple">รางวัล</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- AI MODAL -->
+<div class="modal-bg" id="aiModal">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header">
+      <h3>🤖 Skibidri AI</h3>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('aiModal').classList.remove('show')">✕</button>
+    </div>
+    <div class="ai-wrap">
+      <div class="ai-header">
+        <div class="ai-avatar">🤖</div>
+        <div class="ai-header-info">
+          <h4>Skibidri</h4>
+          <p>powered by Google Gemini · ONLINE</p>
+        </div>
+      </div>
+      <div class="ai-messages" id="aiMessages">
+        <div class="msg msg-bot"><div class="msg-bot-bubble">สวัสดีพลเมือง Boxxland! มีอะไรให้ช่วยไหมครับ 🤖</div></div>
+      </div>
+      <div class="ai-input-row">
+        <input type="text" id="aiInput" placeholder="พิมพ์ข้อความ..." onkeydown="if(event.key==='Enter')sendAI()"/>
+        <button class="btn btn-orange btn-sm" onclick="sendAI()">ส่ง</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<footer>
+  <strong>📦 Boxxland</strong> · ราชอาณาจักรจินตนาการ · 2024<br>
+  Powered by Discord.js · PM2 · Termux · Google Gemini
+</footer>
+
+<script>
+// ====== ROUTING ======
+function goto(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) el.classList.add('active');
+  const lnk = document.querySelector(`.nav-link[data-page="${page}"]`);
+  if (lnk) lnk.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ====== AUTH ======
+let user = null;
+function doLogin(method) {
+  const u = method === 'discord' ? 'Moodeng' : (document.getElementById('loginUser').value.trim() || 'Moodeng');
+  loginAs(u);
+}
+
+function doRegister(method) {
+  let u;
+  if (method === 'discord') {
+    u = 'Moodeng';
+  } else {
+    u = document.getElementById('regUser').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const pass = document.getElementById('regPass').value;
+    const pass2 = document.getElementById('regPass2').value;
+    if (!u || !email || !pass) { showToast('⚠️ กรอกข้อมูลให้ครบก่อนนะ'); return; }
+    if (pass !== pass2) { showToast('⚠️ Password ไม่ตรงกัน'); return; }
+  }
+  loginAs(u, true);
+}
+
+function loginAs(u, isNewAccount) {
+  user = { name: u };
+  document.getElementById('navRight').innerHTML = `
+    <div class="nav-user">
+      <div class="nav-avatar">${u[0].toUpperCase()}</div>
+      <span style="font-size:0.88rem;font-weight:600;">${u}</span>
+      <button class="btn btn-ghost btn-sm" onclick="logout()">ออก</button>
+    </div>`;
+  document.getElementById('profAvatar').textContent = u[0].toUpperCase();
+  document.getElementById('profName').textContent = u;
+  document.getElementById('svcGuest').style.display = 'none';
+  document.getElementById('svcLoggedIn').style.display = 'block';
+  showToast(isNewAccount ? `ลงทะเบียนสำเร็จ ยินดีต้อนรับ ${u}! 🎉` : `ยินดีต้อนรับกลับมา, ${u}! 🎉`);
+  goto('services');
+}
+
+function logout() {
+  user = null;
+  document.getElementById('navRight').innerHTML = `
+    <button class="btn btn-ghost btn-sm" onclick="goto('login')">เข้าสู่ระบบ</button>
+    <button class="btn btn-orange btn-sm" onclick="goto('register')">ลงทะเบียน</button>`;
+  document.getElementById('svcGuest').style.display = 'block';
+  document.getElementById('svcLoggedIn').style.display = 'none';
+  showToast('ออกจากระบบแล้ว');
+  goto('home');
+}
+
+// ====== MAP ======
+const regionInfo = {
+  nova:{title:'🏛️ NOVA CORE — เมืองหลวง',desc:'ศูนย์กลางของ Boxxland ที่รวบรวมระบบการปกครองและบริการหลัก Server Discord หลักของราชอาณาจักรตั้งอยู่ที่นี่',tags:['เมืองหลวง','ปกครอง','Datacenter'],colors:['tag-orange','tag-orange','tag']},
+  hexport:{title:'📦 HEXPORT — เขตค้าขาย',desc:'ศูนย์กลางเศรษฐกิจของ Boxxland ที่ตั้งของระบบ D-DJ-Chinid Economy ซื้อขายหุ้นและแลกเปลี่ยน BXC',tags:['Economy','ค้าขาย','BXC Market'],colors:['tag-green','tag-green','tag']},
+  glitch:{title:'🎨 GLITCH DISTRICT — เขตสร้างสรรค์',desc:'ดินแดนแห่งศิลปะและความสร้างสรรค์ Skibidri AI ผลิตงานศิลปะ นักพัฒนาทดลองโค้ด และ community รวมตัวกัน',tags:['AI Art','Skibidri','Creative'],colors:['tag-purple','tag-purple','tag']},
+  dataforge:{title:'⚙️ DATAFORGE — เขตบอท',desc:'ฐานปฏิบัติการของบอททุกตัวใน Boxxland ทั้ง Skibidri, D-DJ-Chinid, Guardian, Ticket Bot รันจากที่นี่บน Termux + PM2',tags:['Discord Bots','PM2','Termux'],colors:['tag-blue','tag','tag']},
+  outlands:{title:'🌑 OUTLANDS — ดินแดนรกร้าง',desc:'พื้นที่ที่ยังไม่ถูกพัฒนาขอบของราชอาณาจักร มีผู้บุกรุกเป็นครั้งคราว Guardian คอยดูแลบริเวณนี้อยู่',tags:['Unknown','Danger Zone','AntiRaid'],colors:['tag','tag','tag']}
+};
+function showR(id) {
+  const d = regionInfo[id]; if (!d) return;
+  document.getElementById('panelTitle').textContent = d.title;
+  document.getElementById('panelDesc').textContent = d.desc;
+  document.getElementById('panelTags').innerHTML = d.tags.map((t,i)=>`<span class="tag ${d.colors[i]}">${t}</span>`).join('');
+  document.getElementById('mapPanel').classList.add('show');
+}
+
+// ====== AI ======
+const replies = [
+  'ยินดีช่วยครับ! ผม Skibidri AI บอทหลักของ Boxxland 🤖',
+  'ใน Boxxland มีบอท 4 ตัวรันอยู่ตลอด 24/7 ครับ',
+  'อยากให้ gen ภาพ ลองสั่งผ่าน Discord ของเซิร์ฟได้เลยครับ 🎨',
+  'ผมรันบน Google Gemini รองรับทั้ง text, voice และ image generation ครับ',
+  'NOVA CORE คือเมืองหลวงของ Boxxland มีระบบการปกครองอยู่ที่นั่น',
+];
+let aiIdx = 0;
+function sendAI() {
+  const inp = document.getElementById('aiInput');
+  const msg = inp.value.trim(); if (!msg) return;
+  const box = document.getElementById('aiMessages');
+  box.innerHTML += `<div class="msg msg-user"><div class="msg-user-bubble">${msg}</div></div>`;
+  inp.value = '';
+  box.scrollTop = box.scrollHeight;
+  setTimeout(() => {
+    box.innerHTML += `<div class="msg msg-bot"><div class="msg-bot-bubble">${replies[aiIdx%replies.length]}</div></div>`;
+    aiIdx++; box.scrollTop = box.scrollHeight;
+  }, 650);
+}
+
+// ====== MODAL CLOSE ======
+document.querySelectorAll('.modal-bg').forEach(m => {
+  m.addEventListener('click', e => { if (e.target===m) m.classList.remove('show'); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key==='Escape') document.querySelectorAll('.modal-bg').forEach(m=>m.classList.remove('show'));
+});
+
+// ====== TOAST ======
+let tt;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(tt); tt = setTimeout(()=>t.classList.remove('show'), 2600);
+}
+</script>
+</body>
+</html>
